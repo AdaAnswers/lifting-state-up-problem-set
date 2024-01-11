@@ -45,10 +45,23 @@ function App() {
     setStudentData(students);
   };
 
+  // function to delete all student data
+  const deleteStudents = () => {
+    setStudentData([]);
+  };
+
   return (
     <main>
       <h1>Attendance</h1>
       <ClassInfo memberCount={studentData.length}></ClassInfo>
+      {/*
+        Delete button with anonymous event handler. The event details aren't
+        needed, so no parameter is declared. deleteStudents itself /could/ be
+        set directly as the event handler, since it makes no use of inputs,
+        but it was kept separate to keep the idea of responding to the click
+        event, and deleting the student data as two distinct concerns.
+      */}
+      <button onClick={() => deleteStudents()}>Delete All Students!</button>
       <StudentList
         students={studentData}
         onStudentPresenceToggle={toggleStudentPresence}
